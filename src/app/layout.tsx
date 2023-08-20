@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar"
 
 export const metadata = {
   title: "Forums",
@@ -25,7 +26,7 @@ export default function RootLayout({
       <body className="min-h-screen pt-12 bg-slate-50 antialised">
         <Navbar />
 
-        {children}
+        <div className="container max-w-7xl mx-auto h-full pt-12">{children}</div>
       </body>
     </html>
   );
