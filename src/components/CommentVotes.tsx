@@ -45,7 +45,6 @@ const CommentVotes: FC<CommentVotesProps> = ({
       if (voteType === "UP") setVotesAmt((prev) => prev - 1);
       else setVotesAmt((prev) => prev + 1);
 
-      // reset current vote
       setCurrentVote(prevVote);
 
       if (err instanceof AxiosError) {
@@ -62,12 +61,10 @@ const CommentVotes: FC<CommentVotesProps> = ({
     },
     onMutate: (type: VoteType) => {
       if (currentVote?.type === type) {
-        // User is voting the same way again, so remove their vote
         setCurrentVote(undefined);
         if (type === "UP") setVotesAmt((prev) => prev - 1);
         else if (type === "DOWN") setVotesAmt((prev) => prev + 1);
       } else {
-        // User is voting in the opposite direction, so subtract 2
         setCurrentVote({ type });
         if (type === "UP") setVotesAmt((prev) => prev + (currentVote ? 2 : 1));
         else if (type === "DOWN")
@@ -78,7 +75,6 @@ const CommentVotes: FC<CommentVotesProps> = ({
 
   return (
     <div className="flex gap-1">
-      {/* upvote */}
       <Button
         onClick={() => vote("UP")}
         size="xs"
@@ -92,12 +88,10 @@ const CommentVotes: FC<CommentVotesProps> = ({
         />
       </Button>
 
-      {/* score */}
       <p className="text-center py-2 px-1 font-medium text-xs text-zinc-900">
         {votesAmt}
       </p>
 
-      {/* downvote */}
       <Button
         onClick={() => vote("DOWN")}
         size="xs"
