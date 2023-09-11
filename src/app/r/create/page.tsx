@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
 import { toast } from "@/hooks/use-toast";
 import { useCustomToasts } from "@/hooks/use-custom-toasts";
 import { CreateSubredditPayload } from "@/lib/validators/subreddit";
+import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Page = () => {
-  const [input, setInput] = useState<string>("");
   const router = useRouter();
+  const [input, setInput] = useState<string>("");
   const { loginToast } = useCustomToasts();
 
   const { mutate: createCommunity, isLoading } = useMutation({
