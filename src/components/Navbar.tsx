@@ -19,10 +19,8 @@ const Navbar = async () => {
           </p>
         </Link>
 
-        {/* search bar */}
         <SearchBar />
 
-        {/* actions */}
         {session?.user ? (
           <UserAccountNav user={session.user} />
         ) : (
